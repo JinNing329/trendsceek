@@ -339,7 +339,7 @@ calc_pp_trendstats <- function(pp, pp.perm.list, alpha_env = 0.05, alpha_nom_ear
 ###Calculate test statistic of obs and null
     
     ##available test stat methods
-    fcns = c(spatstat::Emark, spatstat::markcorr, spatstat::markvario, spatstat::Vmark)
+    fcns = c(Emark, markcorr, markvario, Vmark)
     names(fcns) = c('Emark', 'markcorr', 'markvario', 'Vmark')
 
     ##subset on selected methods
