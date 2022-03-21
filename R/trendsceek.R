@@ -330,7 +330,7 @@ gen_null <- function(pp, n.rand = 2000){
     ##List of pps with fixed positions but randomized labels
 
     perm = TRUE #keep the marginal mark dist the same
-    pp.perm.list = lapply(1:n.rand, function(j.it, pp, permute){spatstat::rlabel(pp, permute = permute)}, pp = pp, permute = perm)    
+    pp.perm.list = lapply(1:n.rand, function(j.it, pp, permute){rlabel(pp, permute = permute)}, pp = pp, permute = perm)    
     
     return(pp.perm.list)
 }
@@ -399,7 +399,7 @@ calc_pp_trendstats_jmethod <- function(pp, pp.perm.list, j.fcn, alpha_env = 0.05
         ##get local (per radius) test stats for subset
         ##This is the time-consuming step
         j_nsim = length(j_pp_perm_list)
-        j_localstats = spatstat::envelope(pp, j.fcn, nsim = j_nsim, simulate = j_pp_perm_list, global = FALSE, nsim2 = 0, savefuns = TRUE, verbose = FALSE)
+        j_localstats = envelope(pp, j.fcn, nsim = j_nsim, simulate = j_pp_perm_list, global = FALSE, nsim2 = 0, savefuns = TRUE, verbose = FALSE)
         
         ##add test-stats from previous subsets
         local.stats.list = add_subsetstats(local.stats.list, j_localstats, j_nsim_it)
