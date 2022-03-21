@@ -76,7 +76,7 @@ pp_select <-  function(pp, sel.genes){
 pos2pp <- function(pos_mat){
     x.range = range(pos_mat[, 1])
     y.range = range(pos_mat[, 2])
-    pp = spatstat::ppp(x = pos_mat[, 1], y = pos_mat[, 2], x.range, y.range)
+    pp = ppp(x = pos_mat[, 1], y = pos_mat[, 2], x.range, y.range)
 
     return(pp)
 }
@@ -147,7 +147,7 @@ trend.tsne <- function(counts, tsne.k = 2, init.dims = 100, perp.frac = 0.2, max
     log.counts = log10(counts + pseudo.count)
     
     #pca
-    pca = stats::prcomp(t(log.counts), scale=T, center=T)
+    pca = prcomp(t(log.counts), scale=T, center=T)
     pca.basis = pca[['x']]
     
     
